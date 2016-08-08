@@ -1,0 +1,64 @@
+# maps -  wedding html invitaion
+<!DOCTYPE html>
+<html>
+<head>
+<script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
+
+<script>
+
+var myCenter=new google.maps.LatLng(53.508442,-0.120850);
+var myHouse=new google.maps.LatLng(52.508442,-0.220850);
+function initialize()
+{
+
+
+  
+
+var mapProp = {
+  center:myCenter,
+  zoom:5,
+  mapTypeId:google.maps.MapTypeId.ROADMAP,
+styles: [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","stylers":[{"saturation":-100},{"lightness":51},{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"saturation":-100},{"lightness":30},{"visibility":"on"}]},{"featureType":"road.local","stylers":[{"saturation":-100},{"lightness":40},{"visibility":"on"}]},{"featureType":"transit","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"administrative.province","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":-25},{"saturation":-100}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]}]
+  };
+
+
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker=new google.maps.Marker({
+  position:myCenter,
+  });
+var marker2=new google.maps.Marker({
+  position:myHouse,
+  });
+
+marker.setMap(map);
+marker2.setMap(map);
+
+var infowindow = new google.maps.InfoWindow({
+  content:"House -starts to Venue at 9 am"
+  });
+var infowindow2 = new google.maps.InfoWindow({
+  content:"King Regency - 10am Wedding ceremony and Lunch there after"
+  });
+
+google.maps.event.addListener(marker, 'click', function() {
+  infowindow.open(map,marker);
+  });
+google.maps.event.addListener(marker2, 'click', function() {
+  infowindow2.open(map,marker2);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+<div id="googleMap" style="width:500px;height:380px;"></div>
+</body>
+</html>
+
+
